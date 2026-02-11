@@ -1,0 +1,50 @@
+﻿@model EventosCRUD.Models.Evento
+
+@{
+    ViewData["Title"] = "Eliminar Evento";
+}
+
+<h1>Eliminar Evento</h1>
+
+<h3>¿Estás seguro que quieres eliminar este evento?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lugar)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lugar)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AsistentesRegistrados)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AsistentesRegistrados)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
