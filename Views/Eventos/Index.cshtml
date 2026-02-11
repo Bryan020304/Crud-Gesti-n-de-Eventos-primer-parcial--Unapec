@@ -1,14 +1,14 @@
-﻿@model IEnumerable<EventosCRUD.Models.Evento>
+@model IEnumerable<EventosCRUD.Models.Evento>
 
 @{
     ViewData["Title"] = "Eventos";
 }
 
-<h1>📅 Lista de Eventos</h1>
+<h1><i class="bi bi-calendar-event me-2"></i>Lista de Eventos</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">➕ Crear Nuevo Evento</a>
-    <a asp-action="Dashboard" class="btn btn-success">📊 Ver Dashboard</a>
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>Crear Nuevo Evento</a>
+    <a asp-action="Dashboard" class="btn btn-success"><i class="bi bi-bar-chart me-1"></i>Ver Dashboard</a>
 </p>
 
 @if (TempData["Success"] != null)
@@ -78,9 +78,9 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">✏️ Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">👁️ Detalles</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">🗑️ Eliminar</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="bi bi-pencil me-1"></i>Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="bi bi-eye me-1"></i>Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash me-1"></i>Eliminar</a>
                 </td>
             </tr>
         }
