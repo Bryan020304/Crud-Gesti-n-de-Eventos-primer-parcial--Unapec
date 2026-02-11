@@ -1,4 +1,4 @@
-nuevo
+
 🎯 Sistema CRUD de Gestión de Eventos - UNAPEC
 📋 Información Académica
 Universidad: Universidad Acción Pro Educación y Cultura (UNAPEC)
