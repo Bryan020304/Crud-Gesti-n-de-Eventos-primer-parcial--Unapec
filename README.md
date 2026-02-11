@@ -1,6 +1,6 @@
 
-🎯 Sistema CRUD de Gestión de Eventos - UNAPEC
-📋 Información Académica
+ Sistema CRUD de Gestión de Eventos - UNAPEC
+ Información Académica
 Universidad: Universidad Acción Pro Educación y Cultura (UNAPEC)
 
 Asignatura: ISO 815 - Integración de Aplicación con Tec Propietaria
@@ -13,27 +13,27 @@ Profesor: Omar Reyes Medina
 
 Fecha de Entrega: 11/02/2026
 
-🚀 Descripción del Proyecto
+ Descripción del Proyecto
 Sistema web desarrollado en ASP.NET Core MVC 8.0 para la gestión integral de eventos. Implementa operaciones CRUD (Crear, Leer, Actualizar, Eliminar) utilizando Entity Framework Core con SQL Server, siguiendo el patrón Modelo-Vista-Controlador. Incluye inteligencia de negocios para análisis de datos y toma de decisiones.
 
-📊 Objetivos Cumplidos
-✅ Desarrollar aplicación web funcional en ASP.NET MVC
+ Objetivos Cumplidos
+ Desarrollar aplicación web funcional en ASP.NET MVC
 
-✅ Implementar operaciones CRUD con LINQ to SQL
+ Implementar operaciones CRUD con LINQ to SQL
 
-✅ Aplicar correctamente el patrón MVC
+ Aplicar correctamente el patrón MVC
 
-✅ Diseñar modelos de datos conectados a base de datos relacional
+ Diseñar modelos de datos conectados a base de datos relacional
 
-✅ Crear vistas amigables utilizando Razor
+ Crear vistas amigables utilizando Razor
 
-✅ Implementar validaciones en formularios
+ Implementar validaciones en formularios
 
-✅ Probar funcionamiento completo del sistema
+ Probar funcionamiento completo del sistema
 
-✅ Inteligencia de Negocios: Dashboard con métricas y análisis
+ Inteligencia de Negocios: Dashboard con métricas y análisis
 
-🛠️ Tecnologías Utilizadas
+ Tecnologías Utilizadas
 Backend
 Framework: ASP.NET Core MVC 8.0
 
@@ -67,7 +67,7 @@ Gestor de Paquetes: NuGet
 
 Servidor Web: Kestrel
 
-📁 Estructura del Proyecto
+ Estructura del Proyecto
 
 EventosCRUD-UNAPEC/
 │
@@ -110,7 +110,7 @@ EventosCRUD-UNAPEC/
 └── .gitignore                   # Archivos ignorados por Git
 
 
-🎯 Funcionalidades Implementadas
+ Funcionalidades Implementadas
 1. Operaciones CRUD Completas
 Create (Crear): Formulario para agregar nuevos eventos
 
