@@ -4,7 +4,7 @@
     ViewData["Title"] = "Crear Evento";
 }
 
-<h1>Crear Nuevo Evento</h1>
+<h1>➕ Crear Nuevo Evento</h1>
 
 <hr />
 <div class="row">
@@ -40,6 +40,14 @@
                 <label asp-for="AsistentesRegistrados" class="control-label"></label>
                 <input asp-for="AsistentesRegistrados" class="form-control" />
                 <span asp-validation-for="AsistentesRegistrados" class="text-danger"></span>
+                <small class="form-text text-muted">Número de asistentes registrados (0-1000)</small>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="CapacidadMaxima" class="control-label"></label>
+                <input asp-for="CapacidadMaxima" class="form-control" />
+                <span asp-validation-for="CapacidadMaxima" class="text-danger"></span>
+                <small class="form-text text-muted">Capacidad máxima del evento (1-1000)</small>
             </div>
 
             <div class="form-group">

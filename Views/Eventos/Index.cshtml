@@ -4,10 +4,11 @@
     ViewData["Title"] = "Eventos";
 }
 
-<h1>Lista de Eventos</h1>
+<h1>📅 Lista de Eventos</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Evento</a>
+    <a asp-action="Create" class="btn btn-primary">➕ Crear Nuevo Evento</a>
+    <a asp-action="Dashboard" class="btn btn-success">📊 Ver Dashboard</a>
 </p>
 
 @if (TempData["Success"] != null)
@@ -20,11 +21,12 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-            <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
-            <th>@Html.DisplayNameFor(model => model.Fecha)</th>
-            <th>@Html.DisplayNameFor(model => model.Lugar)</th>
-            <th>@Html.DisplayNameFor(model => model.AsistentesRegistrados)</th>
+            <th>Evento</th>
+            <th>Fecha</th>
+            <th>Lugar</th>
+            <th>Asistentes / Capacidad</th>
+            <th>Disponibilidad</th>
+            <th>Estado</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -32,15 +34,53 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                <td>
+                    <strong>@Html.DisplayFor(modelItem => item.Nombre)</strong><br>
+                    <small class="text-muted">@item.Descripcion</small>
+                </td>
                 <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
                 <td>@Html.DisplayFor(modelItem => item.Lugar)</td>
-                <td>@Html.DisplayFor(modelItem => item.AsistentesRegistrados)</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalles</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                    @item.AsistentesRegistrados / @item.CapacidadMaxima
+                    <br>
+                    <small>@item.PorcentajeOcupacion</small>
+                </td>
+                <td>
+                    @if (item.Disponibilidad == "Agotado")
+                    {
+                        <span class="badge bg-danger">@item.Disponibilidad</span>
+                    }
+                    else if (item.Disponibilidad == "Últimos lugares")
+                    {
+                        <span class="badge bg-warning">@item.Disponibilidad</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">@item.Disponibilidad</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Estado == "Hoy")
+                    {
+                        <span class="badge bg-danger">@item.Estado</span>
+                    }
+                    else if (item.Estado == "Próximo")
+                    {
+                        <span class="badge bg-warning">@item.Estado</span>
+                    }
+                    else if (item.Estado == "Finalizado")
+                    {
+                        <span class="badge bg-secondary">@item.Estado</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-info">@item.Estado</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">✏️ Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">👁️ Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">🗑️ Eliminar</a>
                 </td>
             </tr>
         }

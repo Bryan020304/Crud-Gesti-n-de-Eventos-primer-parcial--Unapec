@@ -234,6 +234,7 @@ C:\Users\bncan\source\repos\EventosCRUD\EventosCRUD\obj\Debug\net8.0\EventosCRUD
 C:\Users\bncan\source\repos\EventosCRUD\EventosCRUD\obj\Debug\net8.0\EventosCRUD.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\bncan\source\repos\EventosCRUD\EventosCRUD\obj\Debug\net8.0\EventosCRUD.RazorAssemblyInfo.cache
 C:\Users\bncan\source\repos\EventosCRUD\EventosCRUD\obj\Debug\net8.0\EventosCRUD.RazorAssemblyInfo.cs
+C:\Users\bncan\source\repos\EventosCRUD\EventosCRUD\obj\Debug\net8.0\EventosCRUD.sourcelink.json
 C:\Users\bncan\source\repos\EventosCRUD\EventosCRUD\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\bncan\source\repos\EventosCRUD\EventosCRUD\obj\Debug\net8.0\scopedcss\bundle\EventosCRUD.styles.css
 C:\Users\bncan\source\repos\EventosCRUD\EventosCRUD\obj\Debug\net8.0\scopedcss\projectbundle\EventosCRUD.bundle.scp.css

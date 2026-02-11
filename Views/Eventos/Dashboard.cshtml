@@ -1,0 +1,138 @@
+﻿@model EventosCRUD.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard de Eventos";
+}
+
+<h1>📊 Dashboard de Eventos</h1>
+
+@if (!string.IsNullOrEmpty(ViewData["Mensaje"]?.ToString()))
+{
+    <div class="alert alert-info">
+        @ViewData["Mensaje"]
+    </div>
+}
+
+<div class="row mt-4">
+    <!-- Tarjetas de métricas -->
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total Eventos</h5>
+                <h2>@Model.TotalEventos</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Próximos (7 días)</h5>
+                <h2>@Model.EventosProximos</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h5 class="card-title">Total Asistentes</h5>
+                <h2>@Model.TotalAsistentes</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <h5 class="card-title">Ocupación Total</h5>
+                <h2>@Model.PorcentajeOcupacionTotal%</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabla de eventos con métricas -->
+<div class="card mt-4">
+    <div class="card-header">
+        <h5>Análisis de Eventos</h5>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Fecha</th>
+                    <th>Asistentes</th>
+                    <th>Capacidad</th>
+                    <th>Disponibilidad</th>
+                    <th>Ocupación</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var evento in Model.Eventos)
+                {
+                    <tr>
+                        <td>@evento.Nombre</td>
+                        <td>@evento.Fecha.ToString("dd/MM/yyyy")</td>
+                        <td>@evento.AsistentesRegistrados</td>
+                        <td>@evento.CapacidadMaxima</td>
+                        <td>
+                            @if (evento.Disponibilidad == "Agotado")
+                            {
+                                <span class="badge bg-danger">@evento.Disponibilidad</span>
+                            }
+                            else if (evento.Disponibilidad == "Últimos lugares")
+                            {
+                                <span class="badge bg-warning">@evento.Disponibilidad</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">@evento.Disponibilidad</span>
+                            }
+                        </td>
+                        <td>@evento.PorcentajeOcupacion</td>
+                        <td>
+                            @if (evento.Estado == "Hoy")
+                            {
+                                <span class="badge bg-danger">@evento.Estado</span>
+                            }
+                            else if (evento.Estado == "Próximo")
+                            {
+                                <span class="badge bg-warning">@evento.Estado</span>
+                            }
+                            else if (evento.Estado == "Finalizado")
+                            {
+                                <span class="badge bg-secondary">@evento.Estado</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-info">@evento.Estado</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Resumen Final -->
+<div class="card mt-4">
+    <div class="card-body">
+        <h5>Resumen General</h5>
+        <ul>
+            <li>Total de eventos: @Model.TotalEventos</li>
+            <li>Eventos próximos (7 días): @Model.EventosProximos</li>
+            <li>Eventos finalizados: @Model.EventosFinalizados</li>
+            <li>Total asistentes registrados: @Model.TotalAsistentes</li>
+            <li>Capacidad total disponible: @(Model.CapacidadTotal - Model.TotalAsistentes) lugares</li>
+            <li>Porcentaje de ocupación general: @Model.PorcentajeOcupacionTotal%</li>
+        </ul>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+</div>

@@ -14,6 +14,14 @@
         .navbar-brand {
             font-weight: bold;
         }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
     </style>
 </head>
 <body>
@@ -28,14 +36,22 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Eventos" asp-action="Index">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")"
+                               asp-area="" asp-controller="Eventos" asp-action="Index">
                                 📋 Lista de Eventos
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Eventos" asp-action="Create">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Dashboard" ? "active" : "")"
+                               asp-area="" asp-controller="Eventos" asp-action="Dashboard">
+                                📊 Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Create" ? "active" : "")"
+                               asp-area="" asp-controller="Eventos" asp-action="Create">
                                 ➕ Nuevo Evento
                             </a>
                         </li>

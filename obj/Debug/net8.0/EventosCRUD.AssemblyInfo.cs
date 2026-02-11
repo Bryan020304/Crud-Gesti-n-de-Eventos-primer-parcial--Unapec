@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EventosCRUD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+882afd22571d6c61455d67d210bdee9eadf37f5f")]
 [assembly: System.Reflection.AssemblyProductAttribute("EventosCRUD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EventosCRUD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

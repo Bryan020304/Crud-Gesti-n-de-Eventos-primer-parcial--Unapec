@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EventosCRUD.Models;
+using EventosCRUD.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,8 +49,20 @@ namespace EventosCRUD.Controllers
         // POST: Eventos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion,Fecha,Lugar,AsistentesRegistrados")] Evento evento)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion,Fecha,Lugar,AsistentesRegistrados,CapacidadMaxima")] Evento evento)
         {
+            // Validación de inteligencia de negocios
+            if (evento.AsistentesRegistrados > evento.CapacidadMaxima)
+            {
+                ModelState.AddModelError("AsistentesRegistrados",
+                    "Los asistentes registrados no pueden superar la capacidad máxima.");
+            }
+
+            if (evento.Fecha < DateTime.Today)
+            {
+                ModelState.AddModelError("Fecha", "No se pueden crear eventos con fecha pasada.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(evento);
@@ -79,11 +92,18 @@ namespace EventosCRUD.Controllers
         // POST: Eventos/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,Fecha,Lugar,AsistentesRegistrados")] Evento evento)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,Fecha,Lugar,AsistentesRegistrados,CapacidadMaxima")] Evento evento)
         {
             if (id != evento.Id)
             {
                 return NotFound();
+            }
+
+            // Validación de inteligencia de negocios
+            if (evento.AsistentesRegistrados > evento.CapacidadMaxima)
+            {
+                ModelState.AddModelError("AsistentesRegistrados",
+                    "Los asistentes registrados no pueden superar la capacidad máxima.");
             }
 
             if (ModelState.IsValid)
@@ -138,6 +158,32 @@ namespace EventosCRUD.Controllers
             await _context.SaveChangesAsync();
             TempData["Success"] = "Evento eliminado exitosamente!";
             return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Eventos/Dashboard
+        public async Task<IActionResult> Dashboard()
+        {
+            var eventos = await _context.Eventos.ToListAsync();
+
+            if (!eventos.Any())
+            {
+                ViewData["Mensaje"] = "No hay eventos para mostrar en el dashboard.";
+                return View(new DashboardViewModel());
+            }
+
+            var viewModel = new DashboardViewModel
+            {
+                TotalEventos = eventos.Count,
+                EventosProximos = eventos.Count(e => e.Fecha >= System.DateTime.Today && e.Fecha <= System.DateTime.Today.AddDays(7)),
+                EventosFinalizados = eventos.Count(e => e.Fecha < System.DateTime.Today),
+                TotalAsistentes = eventos.Sum(e => e.AsistentesRegistrados),
+                CapacidadTotal = eventos.Sum(e => e.CapacidadMaxima),
+                PorcentajeOcupacionTotal = eventos.Sum(e => e.CapacidadMaxima) > 0 ?
+                    (eventos.Sum(e => e.AsistentesRegistrados) * 100) / eventos.Sum(e => e.CapacidadMaxima) : 0,
+                Eventos = eventos
+            };
+
+            return View(viewModel);
         }
 
         private bool EventoExists(int id)
