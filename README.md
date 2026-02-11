@@ -8,6 +8,7 @@ Asignatura: ISO 815 - Integración de Aplicación con Tec Propietaria
 Evaluación: 1era Evaluación Parcial (Enero-Abril 2026)
 
 Estudiante: Bryan Candelario, Javier Montero, Jean Pierre
+Video: https://unapecedu-my.sharepoint.com/:v:/g/personal/j_montero43_unapec_edu_do/IQCAc57DWWIcS73sAhmlCb9JAWBo6bUndaZSDvbH-DphXjA?e=59h5tg&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
 Profesor: Omar Reyes Medina
 
